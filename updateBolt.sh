@@ -1,6 +1,12 @@
 #!/bin/zsh
 
 function getBoltVersion() {
+  # Check that bolt has been installed via composer
+  if [ ! -f vendor/bin/nut ]; then
+    echo "Nut couldn't be found. Is it installed here?"
+    exit;
+  fi
+
   boltV=$(php vendor/bin/nut -V --no-ansi | sed "s/.*version //g")
 }
 
